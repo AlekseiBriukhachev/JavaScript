@@ -1,27 +1,22 @@
-'use strict';
+const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// alert('Hello');
+let personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    private: false
+};
 
-// const { write } =sasds require('fs');
+const movieArr = [];
+const rateArr = [];
+for(let i = 0; i < personalMovieDB.count; i++) {
+    movieArr[i] = prompt('Один из последних просмотренных фильмов?', '');
+    rateArr[i] = prompt('Насколько оцените его?');
+}
 
-// const result = confirm('Are you here?');
-// console.log(result);
 
-// const answer = prompt('18 years old', '18');
-// console.log(typeof(answer));
-
-// const answers = [];
-// answers[0] = prompt('What`s your name?', '');
-// answers[1] = prompt('What`s your surname?', '');
-// answers[2] = prompt('What`s your age?', '');
-
-// console.log(typeof(answers));
-
-const category = 'toys';
-
-// console.log('https://someurl.com/' + category + '/' + top);
-console.log(`https://someurl.com/${category}/5`);
-
-const user = 'Ivan';
-
-alert(`Hi, ${user}`);
+for(let i = 0; i < personalMovieDB.count; i++) {
+    personalMovieDB.movies[movieArr[i]] = rateArr[i];
+}
+console.log(personalMovieDB);
