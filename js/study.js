@@ -34,14 +34,14 @@
 
 // promotion(convert(500, usdCurr));
 
-function first() {
-    setTimeout(function() {
-        console.log(1);
-    }, 1000);
-}
-function second() {
-    console.log(2);
-}
+// function first() {
+//     setTimeout(function() {
+//         console.log(1);
+//     }, 1000);
+// }
+// function second() {
+//     console.log(2);
+// }
 // first();
 // second();
 
@@ -56,14 +56,21 @@ function second() {
 
 // learnJS('JavaScript', done);
 
-const optins = {
-    name: 'test',
-    width: 1024,
-    hegth: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    }
-};
+// const optins = {
+//     name: 'test',
+//     width: 1024,
+//     hegth: 1024,
+//     colors: {
+//         border: 'black',
+//         bg: 'red'
+//     }
+// };
 
-console.log(optins.name);
+// console.log(optins.name);
+// const result = getSum(5, 6);
+// const getSum = function(a, b) {
+//     return a + b;
+// }
+let time = '';
+5 > 3 || 2 ? time = 'Day' : time = 'Night' 
+console.log(time)
