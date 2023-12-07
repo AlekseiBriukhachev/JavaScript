@@ -71,6 +71,14 @@
 // const getSum = function(a, b) {
 //     return a + b;
 // }
-let time = '';
-5 > 3 || 2 ? time = 'Day' : time = 'Night' 
-console.log(time)
+
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', () => {
+	alert('Click');
+});
+
+btn.addEventListener('mouseenter', (event) => {
+	console.log(event.target);
+	event.target.remove();
+});
