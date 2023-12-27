@@ -1,0 +1,92 @@
+@media (max-width: 1439px) {
+    
+}
+@media (max-width: 1200px) {  
+    .tabcontainer {
+        width: 100%;
+    }  
+
+}
+@media (max-width: 992px) {
+    .header {
+        padding: 0 24px;
+
+        &__left-block {
+            min-width: 400px;
+        }
+    }
+    .sidepanel {
+        left: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .header {
+        height: 105px;
+
+        &__logo {
+            max-width: 120px;
+        }
+        &__link {
+            font-size: 15px;
+        }
+    }
+    .btn {
+        width: 130px;
+        height: 43px;
+        font-size: 12px;
+    }
+    .sidepanel {
+        left: 25px;
+    }
+    
+}
+@media (max-width: 576px) {
+    .header {
+        height: fit-content;
+        display: block;
+        &__left-block {
+            display: block;
+            min-width: 100%;
+        }
+        &__logo {
+            margin: 15px auto;
+        }
+        &__right-block {
+            display: flex;
+            justify-content: end;
+            margin: 15px 0;
+        }
+    }
+    .sidepanel {
+        left: 12px;
+    }
+    .divider {
+        width: 60%;
+    }
+    .title {
+        font-size: 25px;
+    }
+    .offer {
+        padding: 20px 0 50px 0;
+        .bgc_y {
+            width: 100%;
+        }
+        .container {
+            max-width: 100%;
+            padding: 0px 35px;
+            display: block;
+        }
+        &__slider {
+            display: none;
+        }
+        &__text {
+            width: 100%;
+        }
+        &__advantages {
+            width: 100%;
+            margin-top: 20px;
+        }
+    }
+    
+    
+}
