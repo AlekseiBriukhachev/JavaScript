@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	//Timer
 
-	const deadline = '2023-12-21T09:00:00';
+	const deadline = '2024-12-21T09:00:00';
 	// getDateFromString('<span class="deadline">20 мая в 00:00</span>');
 
 	function getDateFromString(dateString) {
@@ -156,7 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	// const modalTimerId = setTimeout(openModal, 5000);
+	const modalTimerId = setTimeout(openModal, 5000);
 
 	function showModalByScroll() {
 		if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
