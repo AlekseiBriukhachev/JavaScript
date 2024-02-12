@@ -5,6 +5,7 @@ const autoprefixer = require("autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const postcss = require("gulp-postcss");
 const browsersync = require("browser-sync");
+const exec = require("gulp-exec");
 
 const dist = "./dist";
 
@@ -15,9 +16,21 @@ gulp.task("copy-html", () => {
 		.pipe(browsersync.stream());
 });
 
+gulp.task('json-server', () => {
+	const options = {
+		continueOnError: false,
+		pipeStdout: false,
+	}
+	const cmd = 'json-server --watch db.json'
+
+	return gulp.src('./db.json')
+		.pipe(exec(cmd, options))
+		.pipe(exec.reporter());
+});
+
 gulp.task("build-js", () => {
 	return gulp
-		.src("./src/js/main.js")
+		.src("./src/js/script.js")
 		.pipe(
 			webpack({
 				mode: "development",
@@ -97,7 +110,7 @@ gulp.task("prod", () => {
 	gulp.src("./src/icons/**/*.*").pipe(gulp.dest(dist + "/icons"));
 
 	gulp
-		.src("./src/js/main.js")
+		.src("./src/js/script.js")
 		.pipe(
 			webpack({
 				mode: "production",
@@ -139,4 +152,4 @@ gulp.task("prod", () => {
 		.pipe(gulp.dest(dist + "/css"));
 });
 
-gulp.task("default", gulp.parallel("watch", "build"));
+gulp.task("default", gulp.parallel("watch", "build", 'json-server'));
