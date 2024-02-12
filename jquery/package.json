@@ -16,12 +16,15 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
     "babel-loader": "^8.1.0",
+    "browser-sync": "^3.0.2",
     "core-js": "^3.6.5",
     "json-server": "^0.16.1",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "gulp": "^4.0.2",
     "jquery": "^3.7.1"
   }
 }
