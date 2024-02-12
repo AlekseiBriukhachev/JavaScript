@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import {Component, StrictMode} from "react";
+
+const Header = () => {
+  return <h2>Hello World</h2>
+}
+
+const Field = () => {
+  const holder = "Type here";
+  const styledField = {
+    width: '300px'
+  };
+  return <input
+      placeholder={holder}
+      type="text"
+      style={styledField}/>
+}
+
+function Btn() {
+  const text = 'Log In';
+  // const res = () => {
+  //   return 'Log In';
+  // }
+  // const p = <p>Log In</p>
+
+  const logged = false;
+
+  return <button>{logged ? "Enter" : text}</button>
+}
+
+class Field extends Component {
+
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StrictMode><Header/></StrictMode>
+      <Field/>
+      <Btn/>
     </div>
   );
 }
 
+export {Header};
 export default App;
