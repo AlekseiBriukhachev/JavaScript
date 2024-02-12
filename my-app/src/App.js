@@ -16,28 +16,35 @@ const Field = () => {
       style={styledField}/>
 }
 
-function Btn() {
-  const text = 'Log In';
+// function Btn() {
+//   const text = 'Log In';
   // const res = () => {
   //   return 'Log In';
   // }
   // const p = <p>Log In</p>
 
-  const logged = false;
+  // const logged = false;
 
-  return <button>{logged ? "Enter" : text}</button>
+  // return <button>{logged ? "Enter" : text}</button>
+// }
+
+// function WhoAmI(props) {
+function WhoAmI({name, surname, link}) {
+    return (
+      <div>
+          <h1>My name is {name}, surname - {surname}</h1>
+          <a href={link}>My profile</a>
+      </div>
+    );
 }
-
-class Field extends Component {
-
-}
-
 function App() {
   return (
     <div className="App">
-      <StrictMode><Header/></StrictMode>
-      <Field/>
-      <Btn/>
+      {/*<StrictMode><Header/></StrictMode>*/}
+      {/*<Field/>*/}
+      {/*<Btn/>*/}
+        <WhoAmI name="John" surname="Doe" link="facebook.com"/>
+        <WhoAmI name="Alex" surname="Smith" link="insta.com"/>
     </div>
   );
 }
