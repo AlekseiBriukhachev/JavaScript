@@ -27,8 +27,9 @@ class WhoAmI extends Component {
     render() {
         const {name, surname, link} = this.props;
         const {position, years} = this.state;
+
         return (
-            <div>
+            <>
                 <button onClick={this.nextYear}>+++</button>
                 <h1>My name is {name}, surname - {surname},
                     age - {years},
@@ -36,10 +37,10 @@ class WhoAmI extends Component {
                 </h1>
                 <a href={link}>My profile</a>
                 <form>
-                    <span>Enter </span>
+                    <span>Enter position</span>
                     <input type="text" onChange={this.commitInputChanges}/>
                 </form>
-            </div>
+            </>
         )
     }
 }
