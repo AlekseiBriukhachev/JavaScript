@@ -4,6 +4,7 @@ import MarvelServices from "../../services/MarvelServices";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
+import PropTypes from "prop-types";
 
 class CharInfo extends Component {
     state = {
@@ -112,7 +113,7 @@ const View = ({char}) => {
                         if (i > 9) return;
                         return (
                             <li key={i} className="char__comics-item">
-                                <a href={item.resourceURI} className="char__comics-url" >{item.name}</a>
+                                <a href={item.resourceURI + '?apikey=e142567d55bd1f719e65015c8aabc738'} className="char__comics-url" >{item.name}</a>
                             </li>
                         )
                     })
@@ -120,6 +121,10 @@ const View = ({char}) => {
             </ul>
         </>
     )
+}
+
+CharInfo.propTypes = {
+    charId: PropTypes.number
 }
 
 export default CharInfo;
