@@ -1,11 +1,25 @@
-import './comicList.scss';
-import {useEffect, useRef, useState} from "react";
+import './comicsList.scss';
+import {useEffect, useState} from "react";
 import useMarvelServices from "../../services/MarvelServices";
-import charList from "../charList/CharList";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import {Link} from "react-router-dom";
 
+
+const setContent = (process, Component, newItemLoading) => {
+    switch (process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            throw new Error('Unexpected process state');
+    }
+}
 const ComicsList = () => {
 
     const [comicsList, setComicsList] = useState([]);
@@ -13,7 +27,7 @@ const ComicsList = () => {
     const [offset, setOffset] = useState(0);
     const [comicsEnded, setComicsEnded] = useState(false);
 
-    const {loading, error, getAllComics, clearError} = useMarvelServices();
+    const {loading, error, getAllComics, process, setProcess} = useMarvelServices();
 
     useEffect(() => {
         onRequest(offset, true);
@@ -30,7 +44,8 @@ const ComicsList = () => {
     const onRequest = (offset, initial) => {
         setNewItemLoading(initial);
         getAllComics(offset)
-            .then(onComicsLoaded);
+            .then(onComicsLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     const onComicsLoaded = (newComicsList) => {
@@ -70,17 +85,11 @@ const ComicsList = () => {
         )
     }
 
-    const items = renderItems(comicsList);
-
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemLoading ? <Spinner/> : null;
     const newItemSpinner = newItemLoading ? <Spinner/> : null;
 
     return (
         <div className="comics__list">
-            {errorMessage}
-            {spinner}
-            {items}
+            {setContent(process,() => renderItems(comicsList), newItemLoading)}
             <div>
                 {newItemSpinner}
             </div>
