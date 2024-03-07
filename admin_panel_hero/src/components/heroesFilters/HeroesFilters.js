@@ -1,29 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHttp } from "../../hooks/http.hook";
 import { useEffect } from "react";
-import { activeFilterChanged, filtersFetched, filtersFetching, filtersFetchingError } from "../../actions";
+import { fetchFilters } from "../../actions";
+import { activeFilterChanged } from "./filtersSlise";
 import Spinner from "../spinner/Spinner";
 import classNames from "classnames";
 
 
-// Задача для этого компонента:
-// Фильтры должны формироваться на основании загруженных данных
-// Фильтры должны отображать только нужных героев при выборе
-// Активный фильтр имеет класс active
-// Изменять json-файл для удобства МОЖНО!
-// Представьте, что вы попросили бэкенд-разработчика об этом
-
-
 const HeroesFilters = () => {
-    const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state);
+    const { filters, filtersLoadingStatus, activeFilter } = useSelector(state => state.filters);
     const dispatch = useDispatch();
     const { request } = useHttp();
 
     useEffect(() => {
-        dispatch(filtersFetching());
-        request("http://localhost:3001/filters")
-            .then(data => dispatch(filtersFetched(data)))
-            .catch(() => dispatch(filtersFetchingError()))
+        dispatch(fetchFilters(request));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -34,7 +24,7 @@ const HeroesFilters = () => {
     }
 
     const renderFilters = (arr) => {
-        if (arr.length == 0) {
+        if (arr.length === 0) {
             return <h5 className="text-center mt-5">Фильтры не найдены</h5>
         }
 
